@@ -7,7 +7,7 @@ export default function PlayersPage({ players }) {
     <>
       <h1>All Available Players</h1>
       <ul>
-        {players.map((p) => <PlayerCard name={p} />)}
+        {players.map((p) => <PlayerCard name={p} key={p}/>)}
       </ul>
     </>
   );
