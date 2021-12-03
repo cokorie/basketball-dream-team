@@ -21,7 +21,7 @@ export default function NavBar(props) {
       &nbsp; | &nbsp;
       <Link to="/players">View All Players</Link>
       &nbsp; | &nbsp;
-      <span>Welcome, {props.user.name}</span>
+      <span>Hello, {props.user.name}!</span>
       &nbsp; | &nbsp;
       <Link to="" onClick={handleLogOut}>Log Out</Link>
     </nav>
