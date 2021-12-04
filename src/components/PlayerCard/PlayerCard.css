@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+.card {
+    border-style: solid;
+    border-radius: 10%;
+    border-color: black;
+    text-align: center;
+    height: 20vmin;
+}
