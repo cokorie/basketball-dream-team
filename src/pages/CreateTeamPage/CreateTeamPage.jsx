@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import "./CreateTeamPage.css";
 import * as playersAPI from '../../utilities/players-api';
 import * as teamsAPI from '../../utilities/teams-api';
+import { useNavigate } from 'react-router';
 
 export default function CreateTeamPage({ players }) {
   const [team, setTeam] = useState(null);
+  const [activePos, setActivePos] = useState('');
+  const [teamList, setTeamList] = useState([]);
+
+  const positionsRef = useRef([]);
+  const navigate = useNavigate();
+
   const guards = players.filter(player => player.position === 'Guard');
   const guardOptions = guards.map(guard =>
     <option value={guard.name}>
@@ -20,6 +27,37 @@ export default function CreateTeamPage({ players }) {
     <option value={center.name}>
       {center.name}
     </option>)
+
+
+  useEffect(function() {
+    async function getPlayers() {
+      const players = await playersAPI.getAll();
+      positionsRef.current = players.reduce((positions, player) => {
+        const pos = player.position.name;
+        return positions.includes(pos) ? positions : [...positions, pos]
+      }, []);
+      activePos(positionsRef.current[1]);
+      setTeamList(players);
+    }
+    getPlayers();
+
+    async function getTeam() {
+      const team = await teamsAPI.getTeam();
+      setTeam(team);
+    }
+    getTeam();
+  }, []);
+
+  async function handleAddToTeam(playerId) {
+    const updatedTeam = await teamsAPI.addPlayerToTeam(playerId);
+    setTeam(updatedTeam);
+  }
+
+  async function handleCreate() {
+    await teamsAPI.create();
+    navigate('/teams');
+  }
+
   return (
     <>
       <h1>Create a Team</h1>

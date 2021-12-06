@@ -2,6 +2,7 @@ const Player = require('../../models/player');
 
 module.exports = {
     index,
+    show
 }
 
 async function index(req, res) {
@@ -9,3 +10,7 @@ async function index(req, res) {
     res.json(players);
 }
 
+async function show(req, res) {
+    const player = await Player.findById(req.params.id);
+    res.json(player);
+}
