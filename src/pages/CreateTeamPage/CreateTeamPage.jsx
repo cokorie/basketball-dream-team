@@ -61,7 +61,6 @@ export default function CreateTeamPage({ players }) {
       <h1>Current Team</h1>
       {team.players.map(player => <PlayerCard player={player}/>)}
       <h1>Create a Team</h1>
-    <form action="">
       <div className="container">
         <div>
           <h3>Guards</h3>
@@ -94,7 +93,6 @@ export default function CreateTeamPage({ players }) {
             <i>Your Team Here</i>
           </div>
           <button type="submit">Create Your Team</button>
-          </form>
         </div>
       </div>
     </>
