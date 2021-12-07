@@ -1,46 +1,40 @@
 import React, { useEffect, useState, useRef } from 'react';
 import "./CreateTeamPage.css";
-import * as playersAPI from '../../utilities/players-api';
 import * as teamsAPI from '../../utilities/teams-api';
 import { useNavigate } from 'react-router';
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+import PlayerCard from '../../components/PlayerCard/PlayerCard';
 
 export default function CreateTeamPage({ players }) {
   const [team, setTeam] = useState(null);
-  const [activePos, setActivePos] = useState('');
-  const [teamList, setTeamList] = useState([]);
 
-  const positionsRef = useRef([]);
   const navigate = useNavigate();
 
-  const guards = players.filter(player => player.position === 'Guard');
-  const guardOptions = guards.map(guard =>
-    <option value={guard.name}>
-      {guard.name}
-    </option>)
-  const forwards = players.filter(player => player.position === 'Forward');
-  const forwardOptions = forwards.map(forward =>
-    <option value={forward.name}>
-      {forward.name}
-    </option>)
-  const centers = players.filter(player => player.position === 'Center');
-  const centerOptions = centers.map(center =>
-    <option value={center.name}>
-      {center.name}
-    </option>)
+  let guardDivs, forwardDivs, centerDivs;
+  if(team) {
+    const guards = players.filter(player => player.position === 'Guard' && !team.players.some(p => p._id === player._id));
+    guardDivs = guards.map(guard =>
+      <div>
+        {guard.name}
+        <button onClick={() => handleAddPlayerToTeam(guard._id)}>ADD</button>
+      </div>)
+    const forwards = players.filter(player => player.position === 'Forward' && !team.players.some(p => p._id === player._id));
+    forwardDivs = forwards.map(forward =>
+      <div>
+        {forward.name}
+        <button onClick={() => handleAddPlayerToTeam(forward._id)}>ADD</button>
+      </div>)
+    const centers = players.filter(player => player.position === 'Center' && !team.players.some(p => p._id === player._id));
+    centerDivs = centers.map(center =>
+      <div>
+        {center.name}
+        <button onClick={() => handleAddPlayerToTeam(center._id)}>ADD</button>
+      </div>)
+  }
 
 
   useEffect(function() {
-    async function getPlayers() {
-      const players = await playersAPI.getAll();
-      positionsRef.current = players.reduce((positions, player) => {
-        const pos = player.position.name;
-        return positions.includes(pos) ? positions : [...positions, pos]
-      }, []);
-      activePos(positionsRef.current[1]);
-      setTeamList(players);
-    }
-    getPlayers();
-
     async function getTeam() {
       const team = await teamsAPI.getTeam();
       setTeam(team);
@@ -48,55 +42,50 @@ export default function CreateTeamPage({ players }) {
     getTeam();
   }, []);
 
-  async function handleAddToTeam(playerId) {
+
+  async function handleAddPlayerToTeam(playerId) {
     const updatedTeam = await teamsAPI.addPlayerToTeam(playerId);
     setTeam(updatedTeam);
   }
 
-  async function handleCreate() {
-    await teamsAPI.create();
-    navigate('/teams');
-  }
+
+  // async function handleCreate() {
+  //   await teamsAPI.create();
+  //   navigate('/teams');
+  // }
+
+  if(!team) return null;
 
   return (
     <>
+      <h1>Current Team</h1>
+      {team.players.map(player => <PlayerCard player={player}/>)}
       <h1>Create a Team</h1>
+    <form action="">
       <div className="container">
         <div>
           <h3>Guards</h3>
           <em>Choose 2:</em>
           <br />
           <div>
-            <select name="guards" multiple>
-              {guardOptions}
-            </select>
+            {guardDivs}
           </div>
-          <br />
-          <button type="submit">Add Guard</button>
         </div>
         <div>
           <h3>Forwards</h3>
           <em>Choose 2:</em>
           <br />
           <div>
-            <select name="forwards" multiple>
-              {forwardOptions}
-            </select>
+              {forwardDivs}
           </div>
-          <br />
-          <button type="submit">Add Forward</button>
-          <br />
         </div>
         <div>
           <h3>Centers</h3>
           <em>Choose 1:</em>
           <br />
           <div>
-            <select name="" multiple>
-              {centerOptions}
-            </select>
+              {centerDivs}
           </div>
-          <button type="submit">Add Center</button>
         </div>
         <div>
           <h3>Your Team</h3>
@@ -105,6 +94,7 @@ export default function CreateTeamPage({ players }) {
             <i>Your Team Here</i>
           </div>
           <button type="submit">Create Your Team</button>
+          </form>
         </div>
       </div>
     </>

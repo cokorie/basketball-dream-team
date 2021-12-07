@@ -15,11 +15,11 @@ export default function App() {
   const [players, setPlayers] = useState([]);
  
   useEffect(function() {
-  async function getPlayers() {
-    const players = await playersAPI.getAll();
-    setPlayers(players);
-  }
-  getPlayers();
+    async function getPlayers() {
+      const players = await playersAPI.getAll();
+      setPlayers(players);
+    }
+    getPlayers();
  }, []);
 
   return (

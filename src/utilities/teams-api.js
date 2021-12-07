@@ -2,13 +2,9 @@ import sendRequest from './send-request';
 const BASE_URL = '/api/teams';
 
 export function getTeam() {
-    return sendRequest(`${BASE_URL}/team`);
+    return sendRequest(`${BASE_URL}`);
 }
 
 export function addPlayerToTeam(playerId) {
-    return sendRequest(`${BASE_URL}/team/players/${playerId}`, 'POST');
-}
-
-export function create() {
-    return sendRequest(`${BASE_URL}/team/create`, 'POST');
+    return sendRequest(`${BASE_URL}/players/${playerId}`, 'POST');
 }

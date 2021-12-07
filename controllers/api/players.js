@@ -7,6 +7,7 @@ module.exports = {
 
 async function index(req, res) {
     const players = await Player.find({}).sort('name').populate('position').exec();
+    console.log(players);
     res.json(players);
 }
 

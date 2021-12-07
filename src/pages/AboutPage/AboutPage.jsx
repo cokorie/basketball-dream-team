@@ -9,6 +9,7 @@ export default function AboutPage() {
             <p>The Dream Team Calculator is a fun app used to determine what would be the greatest of all time (GOAT) basketball team, if you were able to choose from the greatest players of all time.</p>
             <p>The metrics used for each player are their points per game (PPG), rebounds per game (RPG), assists per game (APG) and the championships (rings) they won throughout their career.</p>
             <p>These metrics are calculated by adding up the points each player earns, and can be compared with other people's created teams to see who has the greater team.</p>
+            <p>Each team is comprised of 2 guards, 2 forwards and 1 center.</p>
             <br />
             <h3>Below is the points breakdown:</h3>
             <ul>

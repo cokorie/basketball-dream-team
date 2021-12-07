@@ -1,13 +1,12 @@
 const Team = require('../../models/team');
-const Player = require('../../models/player');
+// const Player = require('../../models/player');
 
 module.exports = {
-    team,
-    addToTeam,
-    create
+    getUserTeam,
+    addToTeam
 }
 
-async function team(req, res) {
+async function getUserTeam(req, res) {
     const team = await Team.getTeam(req.user._id);
     res.json(team);
 }
@@ -18,8 +17,3 @@ async function addToTeam(req, res) {
     res.json(team);
 }
 
-async function create(req, res) {
-    const team = await Team.getCart(req.user._id);
-    await team.save();
-    res.json(team);
-}
