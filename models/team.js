@@ -5,18 +5,24 @@ const playerSchema = require('./playerSchema');
 
 const teamSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User'},
-    players: [playerSchema]
+    players: [playerSchema],
+    name: String
 }, {
     timestamps: true,
     toJSON: { virtuals: true }
 });
 
-teamSchema.statics.getTeam = function(userId) {
-    return this.findOneAndUpdate(
-        {user: userId},
-        {user: userId},
-        {upsert: true, new: true}
-    );
+teamSchema.statics.getTeam = async function(userId) {
+    let numTeams = await this.find({});
+    numTeams = numTeams.length;
+    let team = await this.findOne({user: userId});
+    if(!team) {
+      team = await this.create({
+        user: userId, 
+        name: `Team ${numTeams + 1}`
+      });
+    }
+    return team;   
 };
 
 const maxPlayersByPosition = {

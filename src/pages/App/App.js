@@ -31,7 +31,7 @@ export default function App() {
             {/* client-side route that renders the component instance if the path matches the url in the address bar */}
             <Route path="/" />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/create" element={<CreateTeamPage players={players}/>} />
+            <Route path="/create" element={<CreateTeamPage players={players} />} />
             <Route path="/myteams" element={<MyTeamsPage />} />
             <Route path="/players" element={<PlayersPage players={players} />} />
           </Routes>
