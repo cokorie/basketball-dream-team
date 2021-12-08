@@ -8,6 +8,7 @@ export default function CreateTeamPage({ players }) {
   const [team, setTeam] = useState(null);
   const [player, setPlayer] = useState(null);
   const [teamName, setTeamName] = useState('');
+  const [teamTotal, setTeamTotal] = useState([]);
 
   const navigate = useNavigate();
 
@@ -55,6 +56,15 @@ export default function CreateTeamPage({ players }) {
     if (team) setTeamName(team.name);
   }, [team]);
 
+  useEffect(function() {
+    if(!team) return;
+    let total = 0;
+    console.log(team)
+    team.players.forEach(function(player) {
+      total += parseFloat(((player.ppg * 7) + (player.rpg * 4) + (player.apg * 5) + (player.rings * 10)).toFixed(1));
+    });
+    setTeamTotal(total);
+  }, [team]);
 
   async function handleAddPlayerToTeam(playerId) {
     const updatedTeam = await teamsAPI.addPlayerToTeam(playerId);
@@ -71,7 +81,6 @@ export default function CreateTeamPage({ players }) {
     const updatedTeam = await teamsAPI.rename(teamName);
     setTeam(updatedTeam);
   }
-
 
   if (!team) return null;
   playerDivs = team.players.map(player =>
@@ -102,7 +111,7 @@ export default function CreateTeamPage({ players }) {
         <button onClick={handleUpdateName}>Update Team Name</button>
       </div>
       <h2>Current Team</h2>
-      <h4>Total Team Points: </h4>
+      <h4>Total Team Points: {teamTotal}</h4>
       {playerDivs}
       <br />
       <h2>Player Choices</h2>

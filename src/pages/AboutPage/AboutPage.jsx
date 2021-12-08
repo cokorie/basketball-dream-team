@@ -19,7 +19,7 @@ export default function AboutPage() {
                 <li>Championships: <strong>10x</strong> their original amount</li>
             </ul>
             <br />
-            <p>🐐 Have fun creating the greatest team! 🐐</p>
+            <p>🐐 Have fun creating the greatest team ever! 🐐</p>
         </>
     );
 }
