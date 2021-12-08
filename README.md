@@ -8,7 +8,7 @@ Below is the points breakdown:
 * PPG: 7x their original amount
 * RPG: 4x their original amount
 * APG: 5x their original amount
-* Championships: 3x their original amount
+* Championships: 10x their original amount
             
 Have fun creating the greatest team of all time!
 
@@ -28,7 +28,7 @@ Have fun creating the greatest team of all time!
 
 ### __Getting Started__
 Please click the following hyperlink to access the Basketball Dream Team Calculator:
-* [The Basketball Dream Team Calculator](https://www.gannett-cdn.com/-mm-/dfff082d1e4931b30569ae37195b6862a6a8ef8a/c=0-361-2915-2008/local/-/media/2018/05/22/USATODAY/USATODAY/636625868623447717-AP-APTOPIX-Heat-Bucks-Basketball-39255807.JPG)
+* [The Basketball Dream Team Calculator](https://basketball-dream-team.herokuapp.com/)
 
 Please click into the below hyperlink to access the Basketball Dream Team Calculator Trello board:
 * [Trello Board](https://trello.com/b/XvdI3EQo/basketball-dream-team-calculator)

@@ -52,7 +52,7 @@ export default function CreateTeamPage({ players }) {
   }, []);
 
   useEffect(function () {
-    if(team) setTeamName(team.name);
+    if (team) setTeamName(team.name);
   }, [team]);
 
 
@@ -74,18 +74,35 @@ export default function CreateTeamPage({ players }) {
 
 
   if (!team) return null;
-
   playerDivs = team.players.map(player =>
-    <div className="name">
-      <strong>{player.name}</strong>
+    <div className="card">
+      <u><strong>{player.name}</strong></u>
+      <br />
+      <strong>{player.position}</strong>
+      <br /><br />
+      PPG: {player.ppg}
+      <br />
+      RPG: {player.rpg}
+      <br />
+      APG: {player.apg}
+      <br /><br />
+      Championships: {player.rings}
+      <br /><br />
+      <strong>Total Points: {parseFloat((player.ppg * 7) + (player.rpg * 4) + (player.apg * 5) + (player.rings * 10)).toFixed(1)}</strong>
+      <br />
       <button onClick={() => handleDeletePlayerFromTeam(player._id)} className="red">X</button>
     </div>)
 
   return (
     <>
-      <h1>Create Your Team</h1>
+      <h1>{teamName} Creation Page</h1>
       <br />
+      <div>
+        <input type="text" placeholder="Enter Team Name Here" value={teamName} onChange={(evt) => setTeamName(evt.target.value)} />
+        <button onClick={handleUpdateName}>Update Team Name</button>
+      </div>
       <h2>Current Team</h2>
+      <h4>Total Team Points: </h4>
       {playerDivs}
       <br />
       <h2>Player Choices</h2>
@@ -119,11 +136,6 @@ export default function CreateTeamPage({ players }) {
           <div>
             {centerDivs}
           </div>
-        </div>
-        <div>
-          <h3>Your Team</h3>
-          <input type="text" placeholder="Team Name" value={teamName} onChange={(evt) => setTeamName(evt.target.value)} />
-          <button onClick={handleUpdateName}>Update Team Name</button>
         </div>
       </div>
     </>

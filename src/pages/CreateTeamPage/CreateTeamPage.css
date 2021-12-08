@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -11,4 +15,13 @@
 
 .red {
     background-color: red;
+}
+
+.card {
+    border-style: double;
+    border-radius: 10%;
+    border-color: black;
+    text-align: center;
+    height: 10vmin;
+    margin: 2vmin;
 }

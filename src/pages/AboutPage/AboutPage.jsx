@@ -16,10 +16,10 @@ export default function AboutPage() {
                 <li>PPG: <strong>7x</strong> their original amount</li>
                 <li>RPG: <strong>4x</strong> their original amount</li>
                 <li>APG: <strong>5x</strong> their original amount</li>
-                <li>Championships: <strong>3x</strong> their original amount</li>
+                <li>Championships: <strong>10x</strong> their original amount</li>
             </ul>
             <br />
-            <p>Have fun creating your teams!</p>
+            <p>🐐 Have fun creating the greatest team! 🐐</p>
         </>
     );
 }
