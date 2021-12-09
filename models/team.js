@@ -6,7 +6,7 @@ const playerSchema = require('./playerSchema');
 const teamSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User'},
     players: [playerSchema],
-    name: String
+    name: { type: String }
 }, {
     timestamps: true,
     toJSON: { virtuals: true }

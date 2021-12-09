@@ -17,11 +17,18 @@
     background-color: red;
 }
 
-.card {
+.create-card {
+    display: flex;
+    flex-direction: column;
     border-style: double;
     border-radius: 10%;
     border-color: black;
     text-align: center;
-    height: 10vmin;
+    width: 20vmin;
+    /* height: 10vmin; */
     margin: 2vmin;
+}
+
+.player-divs {
+    display: flex;
 }

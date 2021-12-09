@@ -16,7 +16,7 @@ export default function CreateTeamPage({ players }) {
   if (team) {
     const guards = players.filter(player => player.position === 'Guard' && !team.players.some(p => p._id === player._id));
     guardDivs = guards.map(guard =>
-      <div>
+      <div className="create-card">
         {guard.name}
         <br />
         <button onClick={() => handleAddPlayerToTeam(guard._id)}>ADD</button>
@@ -84,9 +84,8 @@ export default function CreateTeamPage({ players }) {
 
   if (!team) return null;
   playerDivs = team.players.map(player =>
-    <div className="card">
-      <u><strong>{player.name}</strong></u>
-      <br />
+    <div className="create-card">
+      <div><u><strong>{player.name}</strong></u></div>
       <strong>{player.position}</strong>
       <br /><br />
       PPG: {player.ppg}
@@ -106,36 +105,33 @@ export default function CreateTeamPage({ players }) {
     <>
       <h1>{teamName} Creation Page</h1>
       <br />
-      <div>
+      <form onSubmit={handleUpdateName}>
         <input type="text" placeholder="Enter Team Name Here" value={teamName} onChange={(evt) => setTeamName(evt.target.value)} />
         <button onClick={handleUpdateName}>Update Team Name</button>
-      </div>
+      </form>
       <h2>Current Team</h2>
       <h4>Total Team Points: {teamTotal}</h4>
+      <div className="player-divs">
       {playerDivs}
+      </div>
       <br />
       <h2>Player Choices</h2>
-      <div className="container">
-        <div>
           <h3>Guards</h3>
           <em>Choose 2:</em>
           <br />
           <br />
+      <div className="container">
+            {guardDivs}
           <br />
           <div>
-            {guardDivs}
-          </div>
-        </div>
-        <div>
           <h3>Forwards</h3>
           <em>Choose 2:</em>
-          <br />
-          <br />
-          <br />
-          <div>
-            {forwardDivs}
           </div>
-        </div>
+          <br />
+          <br />
+          <br />
+            {forwardDivs}
+      
         <div>
           <h3>Centers</h3>
           <em>Choose 1:</em>
