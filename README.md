@@ -14,17 +14,19 @@ Have fun creating the greatest team of all time!
 
 ### __Screenshots__
 ![Basketball Dream Team Calculator Sign In Page](/public/imgs/dream_team_signin_page.png)
+##### Basketball Dream Team Calculator Sign In Page
 
 ![Basketball Dream Team Calculator About Page](/public/imgs/dream_team_about_page.png)
+##### Basketball Dream Team Calculator About Page
 
 ![Basketball Dream Team Calculator Create Team Player Select](/public/imgs/dream_team_player_select.png)
+##### Basketball Dream Team Calculator Create Team Player Select
 
-![Basketball Dream Team Calculator Create Team Page](/public/imgs/dream_team_create_page.png)
+![Basketball Dream Team Calculator Create Team Page](/public/imgs/dream_team_create_team_page.png)
+##### Basketball Dream Team Calculator Create Team Page
 
 ![Basketball Dream Team Calculator View All Players Page](/public/imgs/dream_team_all_players_page.png)
-
-
-##### Basketball Dream Team Calculator Landing Page
+##### Basketball Dream Team Calculator View All Players Page
 
 ### __Technologies Used__
 * CSS
