@@ -12,12 +12,14 @@ export default function AboutPage() {
             <p>Each team is comprised of 2 guards, 2 forwards and 1 center.</p>
             <br />
             <h3>Below is the points breakdown:</h3>
+            <div className="about-list">
             <ul>
                 <li>PPG: <strong>7x</strong> their original amount</li>
                 <li>RPG: <strong>4x</strong> their original amount</li>
                 <li>APG: <strong>5x</strong> their original amount</li>
                 <li>Championships: <strong>10x</strong> their original amount</li>
             </ul>
+            </div>
             <br />
             <p>🐐 Have fun creating the greatest team ever! 🐐</p>
         </>

@@ -12,10 +12,18 @@ Below is the points breakdown:
             
 Have fun creating the greatest team of all time!
 
-![Goat](https://image.emojipng.com/56/36056.jpg)
-
 ### __Screenshots__
-![Basketball Dream Team Calculator Landing Page](https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY4MjYxMzU5NzMxODExNjA1/michael-jordan-dunk1jpg.jpg)
+![Basketball Dream Team Calculator Sign In Page](/public/imgs/dream_team_signin_page.png)
+
+![Basketball Dream Team Calculator About Page](/public/imgs/dream_team_about_page.png)
+
+![Basketball Dream Team Calculator Create Team Player Select](/public/imgs/dream_team_player_select.png)
+
+![Basketball Dream Team Calculator Create Team Page](/public/imgs/dream_team_create_page.png)
+
+![Basketball Dream Team Calculator View All Players Page](/public/imgs/dream_team_all_players_page.png)
+
+
 ##### Basketball Dream Team Calculator Landing Page
 
 ### __Technologies Used__

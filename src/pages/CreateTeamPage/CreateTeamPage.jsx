@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import "./CreateTeamPage.css";
 import * as teamsAPI from '../../utilities/teams-api';
 import { useNavigate } from 'react-router';
-import CreateTeamPlayerName from '../../components/CreateTeamPlayerName/CreateTeamPlayerName';
 
 export default function CreateTeamPage({ players }) {
   const [team, setTeam] = useState(null);
@@ -25,7 +24,7 @@ export default function CreateTeamPage({ players }) {
       </div>)
     const forwards = players.filter(player => player.position === 'Forward' && !team.players.some(p => p._id === player._id));
     forwardDivs = forwards.map(forward =>
-      <div>
+      <div className="create-card">
         {forward.name}
         <br />
         <button onClick={() => handleAddPlayerToTeam(forward._id)}>ADD</button>
@@ -34,7 +33,7 @@ export default function CreateTeamPage({ players }) {
       </div>)
     const centers = players.filter(player => player.position === 'Center' && !team.players.some(p => p._id === player._id));
     centerDivs = centers.map(center =>
-      <div>
+      <div className="create-card">
         {center.name}
         <br />
         <button onClick={() => handleAddPlayerToTeam(center._id)}>ADD</button>
@@ -56,11 +55,10 @@ export default function CreateTeamPage({ players }) {
     if (team) setTeamName(team.name);
   }, [team]);
 
-  useEffect(function() {
-    if(!team) return;
+  useEffect(function () {
+    if (!team) return;
     let total = 0;
-    console.log(team)
-    team.players.forEach(function(player) {
+    team.players.forEach(function (player) {
       total += parseFloat(((player.ppg * 7) + (player.rpg * 4) + (player.apg * 5) + (player.rings * 10)).toFixed(1));
     });
     setTeamTotal(total);
@@ -77,7 +75,8 @@ export default function CreateTeamPage({ players }) {
     setTeam(updatedTeam);
   }
 
-  async function handleUpdateName() {
+  async function handleUpdateName(e) {
+    e.preventDefault();
     const updatedTeam = await teamsAPI.rename(teamName);
     setTeam(updatedTeam);
   }
@@ -103,44 +102,34 @@ export default function CreateTeamPage({ players }) {
 
   return (
     <>
-      <h1>{teamName} Creation Page</h1>
-      <br />
-      <form onSubmit={handleUpdateName}>
-        <input type="text" placeholder="Enter Team Name Here" value={teamName} onChange={(evt) => setTeamName(evt.target.value)} />
+      <h1>{team.name} Creation Page</h1>
+      <form className="team-name" onSubmit={handleUpdateName}>
+        <input type="text" placeholder="Enter Team Name Here" value={teamName} name="teamName" onChange={(evt) => setTeamName(evt.target.value)} />
         <button onClick={handleUpdateName}>Update Team Name</button>
       </form>
       <h2>Current Team</h2>
       <h4>Total Team Points: {teamTotal}</h4>
       <div className="player-divs">
-      {playerDivs}
+        {playerDivs}
       </div>
-      <br />
       <h2>Player Choices</h2>
-          <h3>Guards</h3>
-          <em>Choose 2:</em>
-          <br />
-          <br />
+      <h3>Guards</h3>
+      <em>Choose 2:</em>
       <div className="container">
-            {guardDivs}
-          <br />
-          <div>
-          <h3>Forwards</h3>
-          <em>Choose 2:</em>
-          </div>
-          <br />
-          <br />
-          <br />
-            {forwardDivs}
-      
-        <div>
-          <h3>Centers</h3>
-          <em>Choose 1:</em>
-          <br />
-          <br />
-          <br />
-          <div>
-            {centerDivs}
-          </div>
+        {guardDivs}
+      </div>
+      <div>
+        <h3>Forwards</h3>
+        <em>Choose 2:</em>
+      </div>
+      <div className="forward-divs">
+        {forwardDivs}
+      </div>
+      <div>
+        <h3>Centers</h3>
+        <em>Choose 1:</em>
+        <div className="container">
+          {centerDivs}
         </div>
       </div>
     </>

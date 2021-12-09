@@ -2,7 +2,16 @@ h1 {
     font-family: 'Open Sans', sans-serif;
 }
 
-p {
-    font-family: 'Faster One', cursive;
+ul {
+    width: 40vmin;
+
 }
 
+.about-list {
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    margin: 1vmin;
+}

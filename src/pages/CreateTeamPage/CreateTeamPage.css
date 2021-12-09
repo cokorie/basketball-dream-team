@@ -7,6 +7,8 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     text-align: center;
+    justify-items: center;
+    margin-top: 10vmin;
 }
 
 .name {
@@ -27,8 +29,40 @@
     width: 20vmin;
     /* height: 10vmin; */
     margin: 2vmin;
+    padding: 3vmin;
 }
 
 .player-divs {
     display: flex;
+    justify-content: center;
+}
+
+.forward-divs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+    margin-top: 10vmin;
+}
+
+h3 {
+    margin-top: 10vmin;
+}
+
+.team-name {
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .forward-divs {
+        display: flex;
+        flex-direction: column;
+    }
 }

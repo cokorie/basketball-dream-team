@@ -3,9 +3,8 @@ import "./PlayerCard.css";
 
 export default function PlayerCard({ player }) {
     return (
-        <div className="card">
+        <div className="player-card">
             <u><strong>{player.name}</strong></u>
-            <br />
             <div className="ch1">
                 {player.position}
             </div>
